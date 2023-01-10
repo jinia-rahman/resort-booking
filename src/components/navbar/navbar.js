@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {BiSearch} from 'react-icons/bi'
 import {BsPerson} from 'react-icons/bs'
 import {HiOutlineMenuAlt4} from 'react-icons/hi'
+import {faFacebook ,faInstagram ,faTwitter,faYoutube} from 'react-icons/fa'
 import './Navbar.css'
 
-const Navbar = () => {
+function Navbar ()  {
+    const [nav,setNav] =useState(false)
+    const handleNav =()=>setNav(!nav)
   return (
     <div className='navbar'>
 <div className='logo'>
@@ -18,14 +21,13 @@ const Navbar = () => {
     <li>Views</li>
 </ul>
 <div className='nav-icons'>
-<BiSearch className='icon' />
+<BiSearch className='icon' style={{marginRight:'1rem'}}/>
 <BsPerson className ='icon' />
 </div>
-<div className='humburger'>
+<div className='humburger' onClick={handleNav}>
     <HiOutlineMenuAlt4 className='icon' />
 </div>
-<div className='mobile-menu'>    
-----------//mobile view//---------------
+<div className={nav ?'mobile-menu active' :'mobile-menu'}>    
     <ul className='mobile-nav'>
     <li>Home</li>
     <li>Destination</li>
@@ -34,14 +36,19 @@ const Navbar = () => {
     <li>Views</li>
     </ul>
     <div className='mobile-menu-button'>
-        <div className='social-icons'>
-
+        <div className='menu-icons'>
+<button>Search</button>
+<button>Account</button>
         </div>
-
+        <div className='social-icons'>
+            <faFacebook className="icon"/>
+            <faInstagram className="icon"/>
+            <faTwitter className ="icon"/>
+            <faYoutube className="icon"/>
+        </div>
     </div>
-
+    </div>
 </div>
-    </div>
   )
 }
 
